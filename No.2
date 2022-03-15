@@ -1,0 +1,48 @@
+# Rizka Nurul Septiani Hakim
+# 20051397026
+# D4 Manajemen Informatika
+# Praktikum 4 No 2 Program Menghitung Volume Bangun Ruang
+
+class BangunRuang:
+    def __init__(self, name):
+        self.name = name
+    def info(self):
+        return self.name
+    # fungsi untuk mencari volume
+    def volume(self, order):
+        # mencari volume balok
+        if order == 0 :
+            panjang=float(input("masukkan nilai panjang bangun: "))
+            lebar=float(input("masukkan nilai lebar bangun: "))
+            tinggi=float(input("masukkan nilai tinggi bangun: "))
+            volume = panjang*lebar*tinggi
+        # mencari volume prisma segitiga
+        elif order == 1 :
+            alas_segitiga=float(input("masukkan nilai alas segitiga alas bangun: "))
+            tinggi_segitiga=float(input("masukkan nilai tinggi segitiga alas bangun: "))
+            tinggi=float(input("masukkan nilai tinggi bangun: "))
+            volume = alas_segitiga*tinggi_segitiga*tinggi/2
+        # mencari volume tabung
+        elif order == 2 :
+            jari_jari=float(input("masukkan nilai jari -jari bangun: "))
+            tinggi=float(input("masukkan nilai tinggi bangun: "))
+            volume = (3.14*jari_jari*jari_jari)*tinggi
+        
+        return volume
+        
+    print('Pilih Menu : ')      
+bangun_item1 = BangunRuang('Balok')
+bangun_item2 = BangunRuang('Prisma Segitiga')
+bangun_item3 = BangunRuang('Tabung')
+bangun_items = [bangun_item1, bangun_item2, bangun_item3]
+index = 0
+for bangun_item in bangun_items:
+    print(str(index) + '. ' + bangun_item.info())
+    index += 1
+print('--------------------')
+order = int(input('Masukkan nomor bangun yang dipilih: '))
+selected_bangun = bangun_items[order]
+print('bangun yang di pilih adalah: ', selected_bangun.name)
+print('--------------------')
+result = selected_bangun.volume(order)
+print('volume bangun datar ',selected_bangun.name,' adalah: ',str(result))
