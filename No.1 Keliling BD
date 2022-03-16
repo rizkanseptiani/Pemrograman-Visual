@@ -1,0 +1,47 @@
+# Rizka Nurul Septiani Hakim
+# 20051397026
+# D4 Manajemen Informatika
+# Praktikum 4 No 1 Program Menghitung Keliling Bangun Datar
+
+class BangunDatar:
+    def __init__(self, name):
+        self.name = name
+    def info(self):
+        return self.name
+
+    # fungsi untuk mencari keliling
+    def keliling(self, order):
+        # mencari keliling persegi
+        if order == 0 :
+            sisi=float(input("masukkan nilai sisi bangun: "))
+            keliling = sisi*4
+        # mencari keliling segitiga
+        elif order == 1 :
+            a=float(input("masukkan nilai sisi pertama bangun: "))
+            b=float(input("masukkan nilai sisi kedua bangun: "))
+            c=float(input("masukkan nilai sisi ketiga bangun: "))
+            keliling = a + b + c
+        # mencari keliling jajar genjang
+        elif order == 2 :
+            sejajar=float(input("masukkan nilai sisi sejajar bangun: "))
+            miring=float(input("masukkan nilai sisi miring bangun: "))
+            keliling = 2*(sejajar+miring)
+        
+        return keliling
+    
+    print('Pilih Menu : ')   
+bangun_item1 = BangunDatar('Persegi')
+bangun_item2 = BangunDatar('Segitiga')
+bangun_item3 = BangunDatar('Jajar Genjang')
+bangun_items = [bangun_item1, bangun_item2, bangun_item3]
+index = 0
+for bangun_item in bangun_items:
+    print(str(index) + '. ' + bangun_item.info())
+    index += 1
+print('--------------------')
+order = int(input('Masukkan nomor bangun yang dipilih: '))
+selected_bangun = bangun_items[order]
+print('bangun yang di pilih adalah: ', selected_bangun.name)
+print('--------------------')
+result = selected_bangun.keliling(order)
+print('keliling bangun datar ',selected_bangun.name,' adalah: ',str(result))
